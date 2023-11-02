@@ -13,6 +13,11 @@ const font = Rubik({
 
 export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
   const token = ctx.req.cookies.token;
+  const token2 = new Date().getTime().toString();
+  ctx.res.setHeader(
+    "Set-Cookie",
+    `bizToken=$${token2}; Domain=.child-poc-iframe.vercel.app; path=/; Secure; HttpOnly; SameSite=None;`,
+  );
   if (token)
     return {
       props: {

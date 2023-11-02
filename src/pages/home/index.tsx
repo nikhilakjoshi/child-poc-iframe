@@ -40,7 +40,7 @@ export default function Home(
     <>
       <main className={clsx(font.className, "flex h-screen flex-col p-4")}>
         <h1 className="text-lg">Child Frame</h1>
-        {props.token && <p className="text-sm">Cookit Token: {props.token}</p>}
+        {props.token && <p className="text-sm">Cookie Token: {props.token}</p>}
         {showAccept && (
           <button
             className="mt-auto bg-sky-600 py-2 text-white"

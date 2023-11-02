@@ -15,9 +15,14 @@ export default function Home() {
       {showAccept && (
         <button
           onClick={() => {
-            document.requestStorageAccess().then(() => {
-              router.replace("/setcookie");
-            });
+            document.requestStorageAccess().then(
+              () => {
+                router.replace("/setcookie");
+              },
+              () => {
+                console.log("Storage access denied");
+              },
+            );
           }}
         >
           Accept Cookies

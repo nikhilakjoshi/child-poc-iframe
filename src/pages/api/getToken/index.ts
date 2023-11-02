@@ -32,7 +32,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>,
 ) {
-  if (req.method !== "POST")
+  if (req.method !== "GET")
     return res.status(405).json({ message: "Method Not Allowed" });
   await runMiddleware(req, res, cors);
   res.redirect(308, "https://child-poc-iframe.vercel.app/redirected");

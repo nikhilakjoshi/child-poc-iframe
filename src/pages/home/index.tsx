@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { Rubik } from "next/font/google";
 import clsx from "clsx";
 import type {
@@ -11,7 +10,7 @@ const font = Rubik({
   subsets: ["latin-ext"],
 });
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
   const token = ctx.req.cookies.token;
   if (token)
     return {

@@ -17,7 +17,7 @@ export default function Home() {
           onClick={() => {
             document.requestStorageAccess().then(
               () => {
-                router.replace("/setcookie");
+                console.log("Storage access granted");
               },
               () => {
                 console.log("Storage access denied");
@@ -27,7 +27,7 @@ export default function Home() {
         >
           Accept Cookies
         </button>
-      )}{" "}
+      )}
     </>
   );
 }

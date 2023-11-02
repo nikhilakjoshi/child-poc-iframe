@@ -2,7 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import Cors from "cors";
 
 type ResponseData = {
-  message: string;
+  location?: string;
+  message?: string;
 };
 
 const cors = Cors({
@@ -51,5 +52,7 @@ export default async function handler(
         36,
       )}; Domain=.child-poc-iframe.vercel.app; path=/redirected; Secure; HttpOnly; SameSite=None;`,
   );
-  res.status(200).send({ message: "cookie set" });
+  res
+    .status(200)
+    .send({ location: "https://child-poc-iframe.vercel.app/redirected" });
 }

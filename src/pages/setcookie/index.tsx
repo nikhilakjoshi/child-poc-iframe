@@ -4,10 +4,13 @@ export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext,
 ) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  ctx.res.setHeader("Set-Cookie", "name=Mike; domain=localhost:3001; path=/;");
+  ctx.res.setHeader(
+    "Set-Cookie",
+    "token=looskod; domain=child-poc-iframe.vercel.app; path=/; Secure; HttpOnly; SameSite=None; Partitioned;",
+  );
   return {
     redirect: {
-      destination: "http://localhost:3000/home",
+      destination: "https://parent-poc-iframe.vercel.app/home",
       permanent: true,
     },
   };

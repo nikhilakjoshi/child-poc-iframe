@@ -35,5 +35,21 @@ export default async function handler(
   if (req.method !== "GET")
     return res.status(405).json({ message: "Method Not Allowed" });
   await runMiddleware(req, res, cors);
-  res.redirect(308, "https://child-poc-iframe.vercel.app/redirected");
+  res.setHeader(
+    "Set-Cookie",
+    `token=${new Date()
+      .getTime()
+      .toString(
+        36,
+      )}; Domain=.child-poc-iframe.vercel.app; path=/redirected; Secure; HttpOnly; SameSite=None;`,
+  );
+  res.setHeader(
+    "Set-Cookie",
+    `location=${new Date()
+      .getTime()
+      .toString(
+        36,
+      )}; Domain=.child-poc-iframe.vercel.app; path=/redirected; Secure; HttpOnly; SameSite=None;`,
+  );
+  res.status(200).send({ message: "cookie set" });
 }

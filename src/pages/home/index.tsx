@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Rubik } from "next/font/google";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
@@ -28,6 +29,7 @@ export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
 export default function Home(
   props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
+  const router = useRouter();
   const [showAccept, setShowAccept] = useState<boolean>(false);
   useEffect(() => {
     document.hasStorageAccess().then((a) => {
@@ -46,6 +48,7 @@ export default function Home(
               document.requestStorageAccess().then(
                 () => {
                   setShowAccept(false);
+                  router.reload();
                   console.log("Storage access granted");
                 },
                 () => {

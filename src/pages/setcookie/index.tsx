@@ -16,9 +16,6 @@ export default function SetCookie() {
   return (
     <>
       <h1>Set Cookie</h1>
-      <p>
-        <a href="/">Back to Home</a>
-      </p>
     </>
   );
 }

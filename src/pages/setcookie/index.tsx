@@ -4,9 +4,10 @@ export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext,
 ) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
+  const token = new Date().getTime().toString(36);
   ctx.res.setHeader(
     "Set-Cookie",
-    "token=looskod; Domain=.child-poc-iframe.vercel.app; path=/home; Secure; HttpOnly; SameSite=None;",
+    `token=${token}; Domain=.child-poc-iframe.vercel.app; path=/home; Secure; HttpOnly; SameSite=None;`,
   );
   return {
     redirect: {
